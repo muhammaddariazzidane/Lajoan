@@ -1,4 +1,4 @@
-<nav class="bg-white border-b border-gray-200 fixed z-30 w-full">
+<nav class="bg-white shadow-md border-gray-200 fixed z-30 w-full">
   <div class="px-3 py-3 lg:px-5 lg:pl-3">
     <div class="flex items-center justify-between">
       <div class="flex items-center justify-start">
@@ -10,7 +10,7 @@
             <path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path>
           </svg>
         </button>
-        <a href="#" class="text-xl font-bold flex items-center lg:ml-2.5">
+        <a href="<?= base_url('home') ?>" class="text-xl font-bold flex items-center lg:ml-2.5">
           <!-- <img src="https://demo.themesberg.com/windster/images/logo.svg" class="h-6 mr-2" alt="Windster Logo"> -->
           <span class="self-center whitespace-nowrap">Windster</span>
         </a>
@@ -30,13 +30,34 @@
         <button id="toggleSidebarMobileSearch" type="button" class="lg:hidden text-gray-500 hover:text-gray-900 hover:bg-gray-100 p-2 rounded-lg">
 
         </button>
-        <a class="block lg:hidden uppercase mx-auto shadow bg-indigo-600 hover:bg-indigo-500 focus:shadow-outline focus:outline-none text-white text-xs py-3 px-5 rounded" href="<?= base_url('auth') ?>">Login</a>
-        <div class="hidden lg:flex items-center">
-
-          <div class="mb-1">
-            <a class="block uppercase mx-auto shadow bg-indigo-600 hover:bg-indigo-500 focus:shadow-outline focus:outline-none text-white text-xs py-3 px-5 rounded" href="<?= base_url('auth') ?>">Login</a>
+        <?php if ($user) : ?>
+          <div class="relative">
+            <img class="w-[2.4rem] h-[2.2rem] hover:cursor-pointer myHover rounded-full" src="<?= base_url('assets/img/') . $user['image'] ?>" alt="">
+            <div class="absolute myContent hidden right-0 z-20 w-36 py-2 mt-2 overflow-hidden bg-white rounded-md shadow-xl">
+              <hr class="border-gray-200 ">
+              <a href="#" class="block px-4 py-3 text-sm text-gray-600 capitalize transition-colors duration-200 transform  hover:bg-indigo-400 hover:text-white ">
+                view profile
+              </a>
+              <a href="#" class="block px-4 py-3 text-sm text-gray-600 capitalize transition-colors duration-200 transform  hover:bg-indigo-400 hover:text-white ">
+                Settings
+              </a>
+              <hr class="border-gray-200">
+              <a href="#" class="block px-4 py-3 text-sm text-gray-600 capitalize transition-colors duration-200 transform  hover:bg-indigo-400 hover:text-white ">
+                Help
+              </a>
+              <a href="<?= base_url('auth/logout') ?>" class="block px-4 py-3 text-sm text-gray-600 capitalize transition-colors duration-200 transform  hover:bg-indigo-400 hover:text-white ">
+                Sign Out
+              </a>
+            </div>
           </div>
-        </div>
+        <?php else : ?>
+          <a class="block lg:hidden uppercase mx-auto shadow bg-indigo-600 hover:bg-indigo-500 focus:shadow-outline focus:outline-none text-white text-xs py-3 px-5 rounded" href="<?= base_url('auth') ?>">Login</a>
+          <div class="hidden lg:flex items-center">
+            <div class="mb-1">
+              <a class="block uppercase mx-auto shadow bg-indigo-600 hover:bg-indigo-500 focus:shadow-outline focus:outline-none text-white text-xs py-3 px-5 rounded" href="<?= base_url('auth') ?>">Login</a>
+            </div>
+          </div>
+        <?php endif ?>
 
       </div>
     </div>

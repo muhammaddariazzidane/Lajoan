@@ -11,28 +11,31 @@
 
 <body>
   <div class="min-h-screen bg-purple-400 flex justify-center items-center">
-    <div class="absolute w-60 h-60 rounded-xl bg-purple-300 -top-5 -left-16 z-0 transform rotate-45 hidden md:block">
+    <div class="absolute w-60 h-60 rounded-xl bg-violet-500 -top-5 -left-16 z-0 transform rotate-45 hidden md:block">
     </div>
-    <div class="absolute w-48 h-48 rounded-xl bg-purple-300 -bottom-6 -right-10 transform rotate-12 hidden md:block">
+    <div class="absolute w-48 h-48 rounded-xl bg-teal-300 -bottom-6 -right-10 transform rotate-12 hidden md:block">
     </div>
     <div class="py-12 px-12 bg-white rounded-2xl shadow-xl z-20">
       <div>
         <h1 class="text-3xl font-bold text-center mb-4 cursor-pointer">Create An Account</h1>
         <p class="w-80 text-center text-sm mb-8 font-semibold text-gray-700 tracking-wide cursor-pointer">Create an
           account to enjoy all the services without any ads for free!</p>
+        <?= $this->session->flashdata('message') ?>
       </div>
-      <div class="space-y-4">
-        <input type="text" name="email" placeholder="Email Addres" class="block text-sm py-3 px-4 rounded-lg w-full border outline-none" />
-        <input type="text" name="password" placeholder="Password" class="block text-sm py-3 px-4 rounded-lg w-full border outline-none" />
-      </div>
-      <div class="text-center mt-6">
-        <button class="py-3 w-64 text-xl text-white bg-purple-400 rounded-2xl">Create Account</button>
-        <p class="mt-4 text-sm">Already Have An Account? <a href="<?= base_url('auth/register') ?>" class="underline cursor-pointer"> Sign In</a>
-        </p>
-      </div>
+      <form action="<?= base_url('auth') ?>" method="post">
+        <div class="space-y-4">
+          <input type="text" name="email" placeholder="Email Addres" class="block text-sm py-3 px-4 rounded-lg w-full border outline-none" />
+          <input type="password" name="password" placeholder="Password" class="block text-sm py-3 px-4 rounded-lg w-full border outline-none" />
+        </div>
+        <div class="text-center mt-6">
+          <button type="submit" class="py-3 w-64 text-xl text-white bg-purple-400 rounded-2xl">Login</button>
+          <p class="mt-4 text-sm">Already Have An Account? <a href="<?= base_url('auth/register') ?>" class="underline cursor-pointer"> Sign Up</a>
+          </p>
+        </div>
+      </form>
     </div>
-    <div class="w-40 h-40 absolute bg-purple-300 rounded-full top-0 right-12 hidden md:block"></div>
-    <div class="w-20 h-40 absolute bg-purple-300 rounded-full bottom-20 left-10 transform rotate-45 hidden md:block">
+    <div class="w-40 h-40 absolute bg-lime-200 rounded-full top-0 right-12 hidden md:block"></div>
+    <div class="w-20 h-40 absolute bg-lime-200 rounded-full bottom-20 left-10 transform rotate-45 hidden md:block">
     </div>
   </div>
 

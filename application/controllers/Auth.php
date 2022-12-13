@@ -14,30 +14,10 @@ class Auth extends CI_Controller
     if ($this->form_validation->run() == false) {
       $data['title'] = "Login";
       // $this->load->view('templates/auth_header.php', $data);
-      $this->load->view('auth/login', $data);
+      $this->load->view('auth/login');
       // $this->load->view('templates/auth_footer.php');
     } else {
-      $email = $this->input->post('email');
-    $password = $this->input->post('password');
-    $user = $this->db->get_where('user', ['email' => $email])->row_array();
-
-    if ($user) {
-
-      if ($user['is_active'] == 1) {
-        if (password_verify($password, $user['password'])) {
-          $data = [
-            'email' => $user['email'],
-            'role_id' => $user['role_id'],
-          ];
-          $this->session->set_userData($data);
-          if ($user['role_id'] == 1) {
-            redirect('admin');
-          } else {
-            redirect('home');
-          }
-        }
-
-      // $this->AuthModel->login();
+      $this->AuthModel->login();
     }
   }
   public function register()
@@ -64,17 +44,7 @@ class Auth extends CI_Controller
       $this->load->view('auth/register', $data);
       // $this->load->view('templates/auth_footer.php');
     } else {
-      $data = [
-        'name' => $this->input->post('name'),
-        'email' => $this->input->post('email'),
-        'image' => "default.jpg",
-        'password' => $this->input->post('password1'),
-        'role_id' => 2,
-        'date_created' => time(),
-      ];
-      $this->db->insert('user', $data);
-      redirect('auth');
-      // $this->AuthModel->register();
+      $this->AuthModel->register();
     }
   }
   public function logout()
